@@ -1,4 +1,4 @@
-// var fs = require("dotenv").config();
+var fs = require("dotenv").config();
 
 // var keys = require("./keys.js");
 
@@ -14,10 +14,10 @@ console.log("searching for concerts")
 var queryUrl = ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
 
  
-// Make a request for a user with a given ID
+
 axios.get(queryUrl)
   .then(function (response) {
-    // handle success
+    
     // console.log(response.data);
     for (var i = 0; i < response.data.length; i++) {
         console.log("----------");
@@ -38,13 +38,38 @@ axios.get(queryUrl)
     // always executed 
   });
 }
+
 function movieThis(movie) {
+   if (!movie) {
+       return console.log(`If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/`);
+   }
     var queryUrl = ("http://www.omdbapi.com/?t=" + movie + "&apikey=trilogy")
     
     axios.get(queryUrl)
     .then(function (response){
-        console.log(response)
+        console.log(response.data)
+
+            console.log("-----------");
+            console.log(response.data.Title);
+            console.log(response.data.Released);
+            console.log(response.data.imdbRating);
+            console.log(response.data.Country);
+            console.log(response.data.Language);
+            console.log(response.data.Plot);
+            console.log(response.data.Actors);
+            console.log("----------");
+        
     }) 
+    .catch(function (error) {
+        
+        console.log(error);
+      })
+      .finally(function () {
+       
+      });
+   
+      
+    
 }
 
 switch (action) {
@@ -54,4 +79,5 @@ switch (action) {
 
         case "movie-this":
             movieThis(query)
+            break
 }
