@@ -1,6 +1,6 @@
 var fs = require("dotenv").config();
 
-// var keys = require("./keys.js");
+var keys = require("./keys.js");
 
 var axios = require('axios');
 
@@ -38,6 +38,35 @@ axios.get(queryUrl)
     // always executed 
   });
 }
+
+function spotifyThis(song) {
+    if (!song) {
+        return console.log(`Lisen to The Sign by Ace of Base!`);
+    }    
+    // console.log("searching for songs")
+var Spotify = require('node-spotify-api');    
+var spotify = new Spotify(keys.spotify);
+
+song = query; 
+spotify.search({ type:'track', query: song }, function(err, data) {
+
+    if ( err ) {
+        console.log('Error occurred: ' + err);
+        return;  //from spotify npm docs
+    }
+    else{
+    var songInfo = data.tracks.items[0];
+    var songResult = console.log(songInfo.artists[0].name)
+                     console.log(songInfo.name)
+                     console.log(songInfo.preview_url)
+                     console.log(songInfo.album.name)
+    
+    };
+  });
+    
+    }
+
+
 
 function movieThis(movie) {
    if (!movie) {
@@ -80,4 +109,9 @@ switch (action) {
         case "movie-this":
             movieThis(query)
             break
+
+            case "spotify-this":
+            spotifyThis(query) 
+            break
+            
 }
