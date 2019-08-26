@@ -28,4 +28,5 @@ With each of the following commands, the user will receive an appropriate output
       OMDB API
       
       
-  
+  *To View This App: select each file titled with the command, and download*
+      (i.e. select concert-this
