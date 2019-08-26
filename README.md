@@ -29,4 +29,4 @@ With each of the following commands, the user will receive an appropriate output
       
       
   *To View This App: select each file titled with the command, and download*
-      (i.e. select concert-this
+      (i.e. select concert-this.mp4 and download)
